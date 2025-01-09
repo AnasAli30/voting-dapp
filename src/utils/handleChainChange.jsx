@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default async function handleChainChange(SetWeb3state) {
+export const handleChainChange=async(SetWeb3state) =>{
 
     const chainidHex =await window.ethereum.request({
         "method":"eth_chainId"

@@ -1,18 +1,17 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import Dummy from './component/dummy'
+
 import Web3Provider from './context/Web3Provider'
 import './App.css'
+import {routes} from "./routes/routes.jsx"
+import { RouterProvider } from 'react-router-dom'
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <>
      <Web3Provider>
-     <Dummy></Dummy>
+      <RouterProvider router={routes}></RouterProvider>
         </Web3Provider>
+       
     </>
   )
 }
