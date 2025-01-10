@@ -5,33 +5,63 @@ import GetCandidateList from "../pages/candidate/getCandidateList"
 import ElectionCommision from "../pages/ElectionCommision/ElectionCommision"
 import Wallet from "../component/Wallet/wallet"
 import { createBrowserRouter } from "react-router-dom"
+import Navigation from "../component/Navigation/Navigation"
 
 
 export const routes = createBrowserRouter([
     {
         path:"/",
-        element:<Wallet></Wallet>
+        element:(
+          <div>
+        <Wallet></Wallet>
+        </div>
+      )
 
     },
         {
           path: "RegisterVoter",
-          element: <RagisterVoter />,
+          element: (
+            <div>
+            <Navigation></Navigation>
+          <RagisterVoter></RagisterVoter>
+          </div>
+        )
         },
         {
           path: "RagisterCandidate",
-          element: <RagisterCandidate />,
+          element: (
+            <div>
+            <Navigation></Navigation>
+          <RagisterCandidate></RagisterCandidate>
+          </div>
+        )
         },
         {
           path: "GetVoterList",
-          element: <GetVoterList />,
+          element: (
+            <div>
+            <Navigation></Navigation>
+          <GetVoterList></GetVoterList>
+          </div>
+        )
         },
         {
           path: "GetCandidateList",
-          element: <GetCandidateList />,
+          element:(
+            <div>
+            <Navigation></Navigation>
+          <GetCandidateList></GetCandidateList>
+          </div>
+        )
         },
         {
           path: "ElectionCommision",
-          element: <ElectionCommision />,
+          element:(
+            <div>
+            <Navigation></Navigation>
+          <ElectionCommision></ElectionCommision>
+          </div>
+        )
         },
 
     ,])

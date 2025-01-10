@@ -24,7 +24,7 @@ export async function getWeb3State() {
 
     const signer = await provider.getSigner();
 
-    const ca = "0xCCC15B5CCAF92d34f3A99c2270920D3Fcf42c290"
+    const ca = "0x3e0FEEBE40869723128368cC4564C5D6cec60fb8"
     const contractInstance = new ethers.Contract(ca,abi,signer)
     return {contractInstance,selectedAccount,chainId}
  

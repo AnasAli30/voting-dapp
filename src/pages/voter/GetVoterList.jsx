@@ -1,14 +1,16 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useWeb3Context } from '../../context/useWeb3Context'
 
 export default function GetVoterList() {
-  const {contractInstance} = useWeb3Context();
+  const {web3state} = useWeb3Context()
+     const {contractInstance} = web3state;
+     const [list,setList] = useState([])
 
     useEffect(()=>{
         const fetchVoterList = async()=>{
             try{
-                const voterList = await contractInstance.getVoterList;
-                console.log(voterList())
+                const voterList = await contractInstance.getVoterList();
+                setList(voterList)
             }catch(error){
                 console.log(error)
             }
@@ -17,8 +19,15 @@ export default function GetVoterList() {
         contractInstance && fetchVoterList()
 
     },[contractInstance])
-
   return (
-    <div>GetVoterList</div>
+    <ul>
+{list.map((candidateList, index) => (
+  <li key={index}>
+    Name: {candidateList.name}, 
+    party: {candidateList.party}, 
+    Age: {candidateList.age.toString()}
+  </li>
+))}
+</ul>
   )
 }

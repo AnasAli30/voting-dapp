@@ -27,10 +27,9 @@ export default function Web3Provider({children}) {
 
   return (
    <>
-   <Web3Context.Provider value={web3state}>
+   <Web3Context.Provider value={{web3state,handleWallet}}>
     {children}
    </Web3Context.Provider>
-   <button onClick={handleWallet}>Connect Wallet</button>
    </>
   )
 }
