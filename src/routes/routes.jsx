@@ -1,12 +1,13 @@
 import RagisterCandidate from "../pages/candidate/RagisterCandidate"
 import RagisterVoter from '../pages/voter/RagisterVoter'
 import GetVoterList from '../pages/voter/GetVoterList'
-import GetCandidateList from "../pages/candidate/getCandidateList"
+import GetCandidateList from "../pages/candidate/GetCandidateList"
 import ElectionCommision from "../pages/ElectionCommision/ElectionCommision"
 import Wallet from "../component/Wallet/wallet"
 import { createBrowserRouter } from "react-router-dom"
 import Navigation from "../component/Navigation/Navigation"
-
+import TokenExchange from "../pages/TokenMarketplace/TokenMarketplace"
+import Registration from "../pages/Registrator/Registration"
 
 export const routes = createBrowserRouter([
     {
@@ -17,6 +18,12 @@ export const routes = createBrowserRouter([
         </div>
       )
 
+    },
+    {
+  path:"/register",
+  element:(
+    <Registration></Registration>
+  )
     },
         {
           path: "RegisterVoter",
@@ -63,5 +70,11 @@ export const routes = createBrowserRouter([
           </div>
         )
         },
+        {path:"/tokenMarketplace",element:(
+          <div>
+              <Navigation/>
+              <TokenExchange/>
+          </div>
+      )},
 
     ,])

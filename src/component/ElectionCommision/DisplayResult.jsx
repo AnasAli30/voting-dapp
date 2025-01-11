@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useWeb3Context } from '../../context/useWeb3Context'
 import {ethers} from "ethers"
 
-export default function DisplayWinner() {
+export default function DisplayResult() {
    const {web3state} = useWeb3Context();
    const [winner,setWinner] = useState(null);
    const {contractInstance} = web3state;

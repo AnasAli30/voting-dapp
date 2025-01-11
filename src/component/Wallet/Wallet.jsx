@@ -1,26 +1,19 @@
-import React, { useEffect } from 'react'
-import { useWeb3Context } from '../../context/useWeb3Context'
+import { useEffect } from "react";
+import { useWeb3Context } from "../../context/useWeb3Context";
+import { useNavigate } from "react-router-dom";
+import {toast} from "react-hot-toast"
+const Wallet = ()=>{
+ 
+ const {handleWallet,web3state} = useWeb3Context()
+ const {selectedAccount} = web3state
+ const navigateTo = useNavigate()
 
-import { useNavigate } from 'react-router-dom';
-
-export default function Wallet() {
-  const {handleWallet,web3state} = useWeb3Context()
-  console.log(web3state)
-  console.log(handleWallet)
-  const {selectedAccount} = web3state;
-
-  const navigateTo = useNavigate();
-
-  useEffect(()=>{
+ useEffect(()=>{
     if(selectedAccount){
-      navigateTo("/RegisterVoter")
+        navigateTo('/RagisterCandidate')
     }
-  },[web3state])
+ },[selectedAccount])
 
-
-  return (
-    <div>
-       <button onClick={handleWallet}>Connect Wallet</button>
-    </div>
-  )
+ return <button onClick={handleWallet}>Connect Wallet</button>
 }
+export default Wallet;

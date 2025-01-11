@@ -1,7 +1,8 @@
 import React, { useRef } from 'react'
 import { useWeb3Context } from '../../context/useWeb3Context';
+import {toast} from "react-hot-toast"
 
-export default function AcconnceWinner() {
+export default function AnnounceWinner() {
     const {contractInstance} = useWeb3Context();
 
     const handleSubmit=async()=>{
@@ -9,6 +10,7 @@ export default function AcconnceWinner() {
       let data = await contractInstance.announceVotingResult();
       console.log(data);
       }catch(e){
+        toast.error("Error:fetching Voting Result")
         console.log(e)
       }
 

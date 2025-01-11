@@ -2,18 +2,20 @@ import React, { useRef } from 'react'
 import { useWeb3Context } from '../../context/useWeb3Context';
 
 export default function CaseVote() {
-  const {contractInstance} = useWeb3Context();
-  const voterId = useRef(null);
-  const candidateId = useRef(null);
+  const {web3state} = useWeb3Context()
+  const {contractInstance} = web3state;
+  const voterIdRef = useRef(null);
+  const candidateIdRef = useRef(null);
 
-    const handleSubmit=async(e)=>{
+    const voteCandidate=async(e)=>{
       try{
         e.preventDefault();
-      let data = await contractInstance.castVote(
-voterId.current.value,candidateId.current.value);
-      console.log(data);
-      }catch(e){
-        console.log(e)
+        const voterId = voterIdRef.current.value;
+        const candidateId = candidateIdRef.current.value;
+        await contractInstance.castVote(voterId,candidateId)
+      }catch(error){
+        toast.error("Error: Casting Vote")
+        console.error(error)
       }
 
 
@@ -21,11 +23,16 @@ voterId.current.value,candidateId.current.value);
 
   return (
     <div>
-        <h3>Cast Vote</h3>
-        <form action="" onSubmit={handleSubmit}>
-            <input ref={voterId} type="text" placeholder='voterId'/> ref={voterId}
-            <input ref={candidateId} type="text" placeholder='CandidateId'/>
-        </form>
+      <form onSubmit={voteCandidate}>
+        <label>Voter Id:
+            <input type="date" ref={voterIdRef}></input>
+        </label>
+        <label>Candidate ID:
+            <input type="date" ref={candidateIdRef}></input>
+        </label>
+        
+        <button type="submit">Cast Vote </button>
+    </form>
     </div>
   )
 }

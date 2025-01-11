@@ -1,7 +1,7 @@
 import React, { useRef } from 'react'
 import { useWeb3Context } from '../../context/useWeb3Context';
 
-export default function EmergencyDeclared() {
+export default function EmergencyDeclare() {
     const {contractInstance} = useWeb3Context();
 
     const handleSubmit=async()=>{
