@@ -25,7 +25,7 @@ export async function getWeb3State() {
 
     const signer = await provider.getSigner();
 
-    const ca = "0x3e0FEEBE40869723128368cC4564C5D6cec60fb8"
+    // const ca = "0x3e0FEEBE40869723128368cC4564C5D6cec60fb8"
 
     const message =`Welcome to Voting Dapp!
 
@@ -42,8 +42,8 @@ Wallet address: ${selectedAccount}`
    const res = await axios.post(`http://localhost:3000/api/authentication?accountAddress=${selectedAccount}`,dataSign);
    console.log(res.data.token);
    localStorage.setItem("token",res.data.token)
-    const contractInstance = new ethers.Contract(ca,abi,signer)
-    return {contractInstance,selectedAccount,chainId,signer,provider}
+    // const contractInstance = new ethers.Contract(ca,abi,signer)
+    return {selectedAccount,chainId,signer,provider}
 
 }catch(e){
         console.log(e)

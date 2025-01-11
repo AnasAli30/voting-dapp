@@ -8,7 +8,6 @@ import {handleChainChange} from "../utils/handleChainChange";
 
 export default function Web3Provider({children}) {
     const [web3state, setWeb3state] = useState({
-      contractInstance:null,
     selectedAccount:null,
     chainId:null,
     signer:null,
@@ -16,8 +15,8 @@ export default function Web3Provider({children}) {
     })
 
     const handleWallet = async()=>{
-      const {contractInstance,selectedAccount,chainId,signer,provider} = await getWeb3State();
-      setWeb3state({contractInstance,selectedAccount,chainId,signer,provider})
+      const {selectedAccount,chainId,signer,provider} = await getWeb3State();
+      setWeb3state({selectedAccount,chainId,signer,provider})
     }
 
     useEffect(()=>{

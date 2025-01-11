@@ -17,15 +17,11 @@ const ElectionCommision = ()=>{
     },[navigateTo,token])
   return(
     <>
-     <VotingStatus/>
-     <br></br>
-     <DisplayResult/>
-     <br></br>
      <VotingTimePeriod/> 
      <br></br>
-     <AnnounceWinner/>
+     {/* <AnnounceWinner/>
      <br></br>
-     <EmergencyDeclare/>
+     <EmergencyDeclare/> */}
     </>
   )
 }

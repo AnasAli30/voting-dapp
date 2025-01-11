@@ -1,0 +1,18 @@
+.Registration{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.Registration form{
+    width: 90%;
+}
+
+select{
+    /* width: 70%; */
+margin-bottom: 10px;
+    height: 30px;
+
+}
