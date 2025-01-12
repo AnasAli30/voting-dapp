@@ -15,7 +15,7 @@ const GetCandidateList =  ()=>{
 
 
   useEffect(()=>{
-    if(!token){
+    if(!token || !web3state.contractInstance){
       navigateTo("/")
     }
   },[navigateTo,token])
@@ -37,6 +37,7 @@ const GetCandidateList =  ()=>{
     {candidateList.length!==0?(<table className="candidate-list-table">
         <thead>
             <tr>
+            <th className="candidate-list-table-header">Candidate id</th>
             <th className="candidate-list-table-header">Address</th>
                 <th className="candidate-list-table-header">Name</th>
                 <th className="candidate-list-table-header">Party</th>
@@ -47,6 +48,7 @@ const GetCandidateList =  ()=>{
         <tbody>
             {candidateList.map((candidate, index) => (
                 <tr key={index} className={index % 2 === 0 ? "even-row" : "odd-row"}>
+                   <td className="candidate-list-table-data">{candidate.candidateId.toString()}</td>
                     <td className="candidate-list-table-data">{candidate.candidateAddress}
                       <div className="case-vote-button">
                     <CaseVote id={candidate.candidateId}></CaseVote> 

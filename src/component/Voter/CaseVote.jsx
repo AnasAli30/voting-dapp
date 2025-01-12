@@ -25,7 +25,7 @@ export default function CaseVote({id}) {
   return (
     <div>
       <form onSubmit={voteCandidate}>
-        <button className='case-vote-button' type="submit">Cast Vote </button>
+        <button  type="submit">Cast Vote </button>
     </form>
     </div>
   )

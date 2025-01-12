@@ -11,6 +11,7 @@ const BuyToken = ({contractInstance}) => {
         const tx = await contractInstance.buyGLDToken(tokenValueWei,{ gasLimit: 300000 })
         const reciept = tx.wait()
         console.log("Transaction Successful")
+        toast.success("Transaction Successful")
       }catch(error){
         toast.error("Error: Buy Token")
         console.error(error)
@@ -18,7 +19,7 @@ const BuyToken = ({contractInstance}) => {
     }
     return ( <>
     <form onSubmit={buyToken}>
-      <label>Token Amount To Buy(In Eth):</label>
+      <label style={{color:"black",fontWeight:"bold"}}>Token Amount To Buy(In Eth):</label>
       <input type="text" ref={tokenAmountRef}></input>
       <button type="submit">Buy Token</button>
     </form>

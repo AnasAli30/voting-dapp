@@ -32,12 +32,12 @@ const SellToken = ({contractInstance,erc20ContractInstance}) => {
      }
     return ( <>
     <form onSubmit={sellToken}>
-      <label>Token Amount To Sell(In Eth):</label>
+      <label style={{color:"black",fontWeight:"bold"}}>Token Amount To Sell(In Eth):</label>
       <input type="text" ref={sellTokenAmountRef}></input>
       <button type="submit">Sell Token</button>
     </form>
-    <form onSubmit={approveToken}>
-      <label>Token Amount To Approve(In Eth):</label>
+    <form style={{margin:"20px"}} onSubmit={approveToken}>
+      <label style={{color:"black",fontWeight:"bold"}}>Token Amount To Approve(In Eth):</label>
       <input type="text" ref={approveTokenAmountRef}></input>
       <button type="submit">Approve Token</button>
     </form>

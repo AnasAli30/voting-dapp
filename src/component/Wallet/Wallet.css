@@ -1,0 +1,103 @@
+/* Add this to your wallet.css file */
+
+.home-container {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    background: linear-gradient(135deg, #6a11cb, #2575fc, #42a5f5, #ff7e5f);
+    background-size: 400% 400%;
+    animation: gradientAnimation 20s ease infinite;
+    overflow: hidden;
+  }
+  
+  @keyframes gradientAnimation {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+  
+  .home-title {
+    font-size: 3.5rem;
+    color: #fff;
+    z-index: 1;
+    text-shadow: 3px 3px 12px rgba(0, 0, 0, 0.6);
+    font-family: 'Roboto', sans-serif;
+  }
+  
+  .home-subtitle {
+    font-size: 1.6rem;
+    color: #fff;
+    z-index: 1;
+    text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.5);
+    font-family: 'Roboto', sans-serif;
+  }
+  
+  .connect-button {
+    background-color: #ff7e5f;
+    border: none;
+    padding: 16px 32px;
+    font-size: 1.3rem;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 50px;
+    z-index: 1;
+    transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    width: 30%;
+  }
+  
+  .connect-button:hover {
+    background-color: #feb47b;
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+  }
+  
+  .features {
+    display: flex;
+    gap: 2.5rem;
+    margin-top: 3rem;
+    z-index: 1;
+  }
+  
+  .feature-box {
+    background-color: rgba(0, 0, 0, 0.4);
+    padding: 25px;
+    border-radius: 12px;
+    color: white;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .feature-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.6);
+  }
+  
+  .feature-title {
+    font-size: 1.7rem;
+    font-weight: bold;
+    font-family: 'Roboto', sans-serif;
+  }
+  
+  .feature-description {
+    font-size: 1.1rem;
+    font-family: 'Roboto', sans-serif;
+  }
+  
+  /* Optional: Customize particles background */
+  .home-container .tsparticles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0;
+  }
+  

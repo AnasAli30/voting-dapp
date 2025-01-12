@@ -3,8 +3,8 @@ import { useWeb3Context } from '../../context/useWeb3Context'
 import VotingTimePeriod from './VotingTimePeriod';
 
 
-export default function VotingStatus() {
-    const [status,setStatus] = useState(null);
+export default function VotingStatus({ status,setStatus}) {
+   
     const {web3state} = useWeb3Context();
     const {contractInstance} = web3state;
         useEffect(()=>{
@@ -28,10 +28,7 @@ export default function VotingStatus() {
     <> <div className='status' style={{color:"black"}}>
         {status?<>{status}</>:<></>}
     </div>
-   {status=="Not Started"? <div className="election-component">
-        <h2>Voting Time Period</h2>
-        <VotingTimePeriod />
-      </div>:""}
+  
     </>
   )
     

@@ -68,14 +68,15 @@ export default function Registration() {
             const data =   await contractInstance.registerVoter(namer, ager, genderr);
               await uploadUserImage(namer,ager,genderr,statusr,contractr,file,selectedAccount,partyr);
               toast.success("Registration successfull")
-              navigateTo("/")
+              navigateTo("/profile")
             }
               catch(e){
                 if(e.reason){
                   console.log(e)
                   toast.error(e.reason)
                 }else{
-                  toast.error(e)
+                  console.log(e)
+                  toast.error("Error occured ! try again")
                 }
               }
             }else if(statusr==2){
@@ -84,13 +85,14 @@ export default function Registration() {
               await contractInstance.registerCandidate(namer, partyr, ager, genderr);
               await uploadUserImage(namer,ager,genderr,statusr,contractr,file,selectedAccount,partyr);
               toast.success("Registration successfull")
-              navigateTo("/")
+              navigateTo("/profile")
               }catch(e){
                 if(e.reason){
                   console.log(e)
                   toast.error(e.reason)
                 }else{
-                  toast.error(e)
+                  console.log(e)
+                  toast.error("Error occured ! try again")
                 }
 
               }
@@ -101,7 +103,7 @@ export default function Registration() {
             const ca =  await deployContract();
             await uploadUserImage(namer,ager,genderr,statusr,ca,file,selectedAccount,partyr);
             toast.success("Registration successfull")
-            navigateTo("/")
+            navigateTo("/profile")
           }catch(e){
             if(e.reason){
               console.log(e.error)

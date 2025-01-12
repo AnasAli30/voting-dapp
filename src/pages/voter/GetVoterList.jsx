@@ -13,7 +13,8 @@ export default function GetVoterList() {
      const navigateTo = useNavigate()
 
      useEffect(()=>{
-      if(!token){
+        
+      if(!token || (web3state.contractInstance==null)){
         navigateTo("/")
       }
     },[navigateTo,token])
@@ -33,7 +34,7 @@ export default function GetVoterList() {
     },[contractInstance])
     return (  <div className="voter-list-table-container">
           
-      <table className="voter-list-table">
+      {voterList.length!==0?<table className="voter-list-table">
           <thead>
               <tr>
               <th className="voter-list-table-header">Address</th>
@@ -50,6 +51,6 @@ export default function GetVoterList() {
                   </tr>
               ))}
           </tbody>
-      </table>
+      </table>:<p>No Voter Found!</p>}
   </div>);
 }

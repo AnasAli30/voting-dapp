@@ -2,10 +2,22 @@ import React, { useEffect, useState } from 'react';
 import './Profile.css';
 import { useWeb3Context } from '../../context/useWeb3Context';
 import { use } from 'react';
+import { useNavigate } from "react-router-dom";
 
 const Profile = () => {
     const {web3state,setWeb3state} = useWeb3Context();
     const {userData,contractInstance,userDataCa} = web3state;
+    const token = localStorage.getItem("token")
+    const navigateTo = useNavigate()
+
+
+    useEffect(()=>{
+      console.log(web3state)
+      if(!token || (contractInstance==null)){
+        navigateTo("/")
+      }
+    },[token,navigateTo])
+
 
     useEffect(()=>{
       const fectch=async()=>{
@@ -24,14 +36,14 @@ const Profile = () => {
 
     },[userData])
 
-  const genderLabel = userData.gender === 1 ? 'Male' : 'Female';
+  const genderLabel = userData?.gender === 1 ? 'Male' : 'Female';
   const statusEnum = {
     ElectionCommision: 0,
     Voter: 1,
     Candidate: 2,
   };
   const levelLabel = Object.keys(statusEnum).find(
-    key => statusEnum[key] === userData.level
+    key => statusEnum[key] === userData?.level
   );
 
   return (
@@ -39,20 +51,22 @@ const Profile = () => {
         <div className="profile-card">
           <div className="profile-header">
             <img
-             src={`http://localhost:3000/images/user/${userData.accountAddress}.jpg`}
+             src={`http://localhost:3000/images/user/${userData?.accountAddress}.jpg`}
               alt="Profile"
               className="profile-image"
             />
-            <h2>{userData.name}</h2>
+            <h2>{userData?.name}</h2>
             <p className="profile-role">{levelLabel}</p>
+
+            {userDataCa?.voteCandidateId?<p className='votes'>You voted to Candidate_id:{userDataCa?.voteCandidateId.toString()}</p>:""}
            {userDataCa?.votes!=undefined?<p className='votes'><strong>Votes:</strong>{userDataCa?.votes?.toString()}</p>:""}
           </div>
           <div className="profile-details">
-            <p><strong>Age:</strong> {userData.age}</p>
+            <p><strong>Age:</strong> {userData?.age}</p>
             <p><strong>Gender:</strong> {genderLabel}</p>
-            {userData.party!="undefined"?<p><strong>Party:</strong> {userData.party}</p>:""}
-            <p><strong>Contract Address:</strong> <span className="highlight-address">{userData.contractAdd}</span></p>
-          <p><strong>Account Address:</strong> <span className="highlight-address">{userData.accountAddress}</span></p>
+            {userData?.party!="undefined"?<p><strong>Party:</strong> {userData?.party}</p>:""}
+            <p><strong>Contract Address:</strong> <span className="highlight-address">{userData?.contractAdd}</span></p>
+          <p><strong>Account Address:</strong> <span className="highlight-address">{userData?.accountAddress}</span></p>
           </div>
         </div>
       </div>

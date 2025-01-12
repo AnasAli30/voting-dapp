@@ -6,7 +6,7 @@ import BuyToken from "../../component/TokenMarketplace/BuyToken";
 import SellToken from "../../component/TokenMarketplace/SellToken";
 import TokenBalance from "../../component/TokenMarketplace/TokenBalance";
 import TokenPrice from "../../component/TokenMarketplace/TokenPrice";
-import "./TokenMarketplace.css"
+import "./TokenMarketplace.css";
 
 import tokenMarketplaceAbi from "../../constant/tokenMarketplaceAbi.json";
 import erc20abi from "../../constant/erc20Abi.json";

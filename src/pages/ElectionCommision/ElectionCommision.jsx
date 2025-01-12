@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect,useState } from "react";
 import { useNavigate } from "react-router-dom";
 import AnnounceWinner from "../../component/ElectionCommision/AnnounceWinner";
 import DisplayResult from "../../component/ElectionCommision/DisplayResult";
@@ -12,6 +12,7 @@ import "./ElectionCommission.css";
 const ElectionCommision = () => {
   const token = localStorage.getItem("token");
   const navigateTo = useNavigate();
+   const [status,setStatus] = useState(null);
 
   useEffect(() => {
     if (!token) {
@@ -26,11 +27,16 @@ const ElectionCommision = () => {
       </div>
       <div className="election-component">
         <h2>Voting Status</h2>
-        <VotingStatus />
+        <VotingStatus status={status} setStatus={setStatus}/>
       </div>
 
-      
+      {status=="Not Started"? <div className="election-component">
+        <h2>Voting Time Period</h2>
+        <VotingTimePeriod />
+      </div>:""}
 
+      {status=="In Progress"?
+      <>
       <div className="divider"></div>
 
       <div className="election-component announce-winner-section">
@@ -43,7 +49,7 @@ const ElectionCommision = () => {
       <div className="election-component emergency-section">
         <h2>Emergency Declare</h2>
         <EmergencyDeclare />
-      </div>
+      </div></>:""}
     </div>
   );
 };
