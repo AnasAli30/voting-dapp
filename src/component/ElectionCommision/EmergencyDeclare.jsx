@@ -2,10 +2,12 @@ import React, { useRef } from 'react'
 import { useWeb3Context } from '../../context/useWeb3Context';
 
 export default function EmergencyDeclare() {
-    const {contractInstance} = useWeb3Context();
+   const {web3state} = useWeb3Context();
+      const {contractInstance} = web3state;
 
-    const handleSubmit=async()=>{
+    const handleSubmit=async(e)=>{
       try{
+        e.preventDefault();
       let data = await contractInstance.emergencyStopVoting();
       console.log(data);
       }catch(e){
@@ -18,7 +20,7 @@ export default function EmergencyDeclare() {
     
     <div>
         <form action="" onClick={handleSubmit}>
-        <input type="submit" value="EmergencyDeclared" />
+        <input style={{backgroundColor:"red",fontWeight:"bold"}} type="submit" value="EmergencyDeclared" />
         </form>
         </div>
   )

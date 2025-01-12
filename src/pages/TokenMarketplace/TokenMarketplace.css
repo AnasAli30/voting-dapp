@@ -1,0 +1,102 @@
+ainer for the marketplace */
+.token-marketplace-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Title Styles */
+.token-marketplace-title {
+    font-size: 2rem;
+    font-weight: 700;
+    text-align: center;
+    color: #fffefe;
+    margin-bottom: 30px;
+}
+
+/* Token Balance Section */
+.token-balance-section {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+
+.token-balance-card, .token-price-card {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 45%;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.token-balance-card:hover, .token-price-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Token Balance Card Background Color */
+.token-balance-card {
+    background-color: #f8f9fa; /* Light gray for token balance card */
+}
+
+/* Token Price Card Background Color */
+.token-price-card {
+    background-color: #e8f5e9; /* Light greenish for token price card */
+}
+
+.token-balance-card h3, .token-price-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.token-balance-card p, .token-price-card p {
+    font-size: 1.1rem;
+    color: #777;
+}
+
+/* Buttons (Buy and Sell) */
+.button {
+    background-color: #3498db;
+    color: white;
+    padding: 12px 20px;
+    font-size: 1.1rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 100%;
+}
+
+.button:hover {
+    background-color: #2980b9;
+}
+
+.button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .token-marketplace-container {
+        padding: 10px;
+    }
+
+    .token-balance-section,
+    .token-price-section {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .token-balance-card,
+    .token-price-card {
+        width: 80%;
+        margin-bottom: 20px;
+    }
+}

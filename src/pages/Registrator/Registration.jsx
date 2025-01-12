@@ -3,6 +3,11 @@ import "./Registration.css"
 import ElectionCommision from '../ElectionCommision/ElectionCommision'
 import { useWeb3Context } from '../../context/useWeb3Context';
 import { uploadUserImage } from '../../utils/uploadUserImage';
+import {ethers} from "ethers"
+import abi from "../../constant/abi.json"
+import {contractBytecode} from "../../constant/bytecode"
+import toast from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
 
 export default function Registration() {
     const name = useRef(null);
@@ -13,10 +18,9 @@ export default function Registration() {
     const party = useRef(null)
     const [file,setFile] = useState(null);
     const {web3state} = useWeb3Context()
-    console.log(web3state)
-    const {selectedAccount} = web3state;
-    console.log(selectedAccount)
-
+    const {selectedAccount,signer} = web3state;
+    const navigateTo = useNavigate()
+   
     const [stat,setStat] = useState(0);
     const genderEnum = {
         NotSpecified: 0,
@@ -35,16 +39,83 @@ export default function Registration() {
           setSelectedGender(e.target.value);
         };
 
+        async function deployContract() {
+          const factory = new ethers.ContractFactory(abi, contractBytecode, signer);
+          try {
+            const contract = await factory.deploy("0x8c1C870DacC51ad946c5F39B8115C8fbE2165c22");
+            console.log("Deploying contract...");
+            await contract.waitForDeployment();
+            toast.success("Contract Deployed");
+            return contract.target;
+          } catch (err) {
+            throw new Error(err);
+            console.error("Deployment failed:", err);
+          }
+        }
+
         const handleSubmit = async(e)=>{
             e.preventDefault();
             const namer = name.current.value;
             const ager = age.current.value;
             const genderr = gender.current.value;
             const statusr = status.current.value;
-            const contractr = contract.current.value;
-            const partyr = party.current.value
+            const contractr = contract?.current?.value;
+            const partyr = party?.current?.value
             console.log(namer,ager,genderr,statusr,contractr);
-            await uploadUserImage(namer,ager,genderr,statusr,contractr,file,"0x9d54a1832bddd1f1f0b3721b934b4f3ac1ec369d",partyr);
+            if(statusr==1){
+              try{
+              const contractInstance = new ethers.Contract(contractr,abi,signer)
+            const data =   await contractInstance.registerVoter(namer, ager, genderr);
+              await uploadUserImage(namer,ager,genderr,statusr,contractr,file,selectedAccount,partyr);
+              toast.success("Registration successfull")
+              navigateTo("/")
+            }
+              catch(e){
+                if(e.reason){
+                  console.log(e)
+                  toast.error(e.reason)
+                }else{
+                  toast.error(e)
+                }
+              }
+            }else if(statusr==2){
+              try{
+              const contractInstance = new ethers.Contract(contractr,abi,signer)
+              await contractInstance.registerCandidate(namer, partyr, ager, genderr);
+              await uploadUserImage(namer,ager,genderr,statusr,contractr,file,selectedAccount,partyr);
+              toast.success("Registration successfull")
+              navigateTo("/")
+              }catch(e){
+                if(e.reason){
+                  console.log(e)
+                  toast.error(e.reason)
+                }else{
+                  toast.error(e)
+                }
+
+              }
+
+            }else{
+              console.log("election commission")
+              try{
+            const ca =  await deployContract();
+            await uploadUserImage(namer,ager,genderr,statusr,ca,file,selectedAccount,partyr);
+            toast.success("Registration successfull")
+            navigateTo("/")
+          }catch(e){
+            if(e.reason){
+              console.log(e.error)
+              toast.error(e.reason)
+            }else{
+              console.log(e)
+              toast.error("Registration failed , Try again!!")
+            }
+          }
+            
+              
+          
+            }
+           
         }
 
   return (

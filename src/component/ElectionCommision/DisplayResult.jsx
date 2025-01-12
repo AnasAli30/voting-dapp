@@ -17,7 +17,7 @@ export default function DisplayResult() {
     contractInstance && fetchWinner();
     },[web3state])
   return (
-    <div>{winner?<div>Winner:{winner}</div>:<div>
+    <div style={{color:"black",fontWeight:"bold",textAlign:"center"}}>{winner?<div>Winner:{winner}</div>:<div>
         No winner Accounced Yet</div>}</div>
   )
 }

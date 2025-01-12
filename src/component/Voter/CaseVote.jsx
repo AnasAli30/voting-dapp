@@ -1,20 +1,21 @@
 import React, { useRef } from 'react'
 import { useWeb3Context } from '../../context/useWeb3Context';
+import toast from 'react-hot-toast';
 
-export default function CaseVote() {
+export default function CaseVote({id}) {
   const {web3state} = useWeb3Context()
-  const {contractInstance} = web3state;
-  const voterIdRef = useRef(null);
-  const candidateIdRef = useRef(null);
-
+  const {contractInstance,userData,userDataCa} = web3state;
     const voteCandidate=async(e)=>{
       try{
         e.preventDefault();
-        const voterId = voterIdRef.current.value;
-        const candidateId = candidateIdRef.current.value;
+        console.log(e)
+        const voterId = userDataCa.voterId;
+        const candidateId = id;
+        console.log(voterId,candidateId)
         await contractInstance.castVote(voterId,candidateId)
+        toast.success("Voting SuccesFull")
       }catch(error){
-        toast.error("Error: Casting Vote")
+        toast.error(error.reason)
         console.error(error)
       }
 
@@ -24,14 +25,7 @@ export default function CaseVote() {
   return (
     <div>
       <form onSubmit={voteCandidate}>
-        <label>Voter Id:
-            <input type="date" ref={voterIdRef}></input>
-        </label>
-        <label>Candidate ID:
-            <input type="date" ref={candidateIdRef}></input>
-        </label>
-        
-        <button type="submit">Cast Vote </button>
+        <button className='case-vote-button' type="submit">Cast Vote </button>
     </form>
     </div>
   )

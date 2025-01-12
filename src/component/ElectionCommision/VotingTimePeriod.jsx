@@ -1,8 +1,10 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { useWeb3Context } from '../../context/useWeb3Context';
+import toast from 'react-hot-toast';
 
 export default function VotingTimePeriod() {
-  const { contractInstance } = useWeb3Context();
+  const { web3state } = useWeb3Context();
+  const {contractInstance} =web3state;
   const stime = useRef(null);
   const etime = useRef(null);
   const [currentDateTime, setCurrentDateTime] = useState('');
@@ -31,19 +33,23 @@ export default function VotingTimePeriod() {
     }
 
     try {
+      console.log(startTime,endTime)
       let data = await contractInstance.setVotingPeriod(startTime, endTime);
+      console.log(data)
+      toast.success("Voting Has Been Started")
       console.log('Transaction successful:', data);
     } catch (e) {
+      if(e.message){
+      toast.error(e.reason)}
+      console.log(e)
       console.error('Transaction failed:', e);
     }
   };
 
   return (
     <div>
-      <h3>Set Voting Time Period</h3>
-
       <form onSubmit={handleSubmit}>
-        <label>Start Date & Time:</label>
+        <label style={{color:"black",fontWeight:"bold"}}>Start Date & Time:</label>
         <input
           ref={stime}
           type="datetime-local"
@@ -52,7 +58,7 @@ export default function VotingTimePeriod() {
           required
         />
 
-        <label>End Date & Time:</label>
+        <label style={{color:"black",fontWeight:"bold"}}>End Date & Time:</label>
         <input
           ref={etime}
           type="datetime-local"
@@ -61,7 +67,7 @@ export default function VotingTimePeriod() {
           required
         />
 
-        <button type="submit">Register</button>
+        <button type="submit">Start Voting</button>
       </form>
     </div>
   );

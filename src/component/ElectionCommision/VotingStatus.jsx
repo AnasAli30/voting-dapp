@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useWeb3Context } from '../../context/useWeb3Context'
+import VotingTimePeriod from './VotingTimePeriod';
 
 
 export default function VotingStatus() {
@@ -9,6 +10,9 @@ export default function VotingStatus() {
         useEffect(()=>{
         const fetchWinner= async()=>{
            const sta =  await contractInstance.getVotingStatus();
+           const statetime = await contractInstance.startTime();
+           const endTime = await contractInstance.endTime()
+           console.log(statetime.toString(),endTime)
            if(sta==0){
             setStatus("Not Started");
            }else if(sta==1){  
@@ -21,8 +25,15 @@ export default function VotingStatus() {
         contractInstance && fetchWinner();
         },[web3state])
   return (
-    <div>
-        VotingStatus:{status?<>{status}</>:<></>}
+    <> <div className='status' style={{color:"black"}}>
+        {status?<>{status}</>:<></>}
     </div>
+   {status=="Not Started"? <div className="election-component">
+        <h2>Voting Time Period</h2>
+        <VotingTimePeriod />
+      </div>:""}
+    </>
   )
+    
+   
 }

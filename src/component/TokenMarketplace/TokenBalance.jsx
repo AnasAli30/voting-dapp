@@ -21,7 +21,7 @@ const TokenBalance = ({erc20ContractInstance}) => {
         } 
         erc20ContractInstance && fetchTokenBalance()
     },[erc20ContractInstance,selectedAccount])
-    return (<>Token Balance:{userTokenBalance}</>);
+    return (<div style={{color:"black",fontWeight:"bold"}}>Token Balance:{userTokenBalance}</div>);
 }
  
 export default TokenBalance;

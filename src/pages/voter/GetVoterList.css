@@ -1,45 +1,68 @@
-/* voterList.css */
-
-/* Table container styles */
+/* Container Styling */
 .voter-list-table-container {
-    margin-top: 20px;
-  }
-  
-  /* Table styles */
-  .voter-list-table {
-    width: 100%;
-    border-collapse: collapse;
-  }
-  
-  /* Table header styles */
-  .voter-list-table-header {
-    background-color: #f2f2f2; /* Light grey background */
-    padding: 10px;
-    text-align: center;
-    color:#333;
-  
-  }
-  
-  /* Table body styles */
-  .voter-list-table-data {
-    padding: 10px;
-    border-bottom: 1px solid #ddd; /* Bottom border */
-    color:#333
-  }
-  
-  /* Alternate row background color */
-  .even-row {
-    background-color: #ffffff; /* Lighter grey background */
-  }
-  
-  /* Hover effect on rows */
-  .even-row:hover,
-  .odd-row:hover {
-    background-color: #E2DED0; /* Light grey background on hover */
-  }
-  
-  /* Odd row background color */
-  .odd-row {
-    background-color: #ffffff; /* White background */
-  }
-  
+  width: 90%;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: #f0f8ff; /* Light blue background for a fresh look */
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Table Styling */
+.voter-list-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #ffffff;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+/* Header Styling */
+.voter-list-table-header {
+  background-color: #1e90ff; /* Dodger Blue for header */
+  color: white;
+  text-align: left;
+  padding: 12px 15px;
+  font-size: 16px;
+  letter-spacing: 0.5px;
+}
+
+/* Data Cell Styling */
+.voter-list-table-data {
+  padding: 12px 15px;
+  font-size: 14px;
+  color: #333333;
+  border-bottom: 1px solid #dddddd;
+}
+
+/* Alternating Row Colors */
+.even-row {
+  background-color: #e6f7ff; /* Light blue tint */
+}
+
+.odd-row {
+  background-color: #ffffff;
+}
+
+/* Image Styling */
+.voter-list-table-data img {
+  width: 70px;
+  height: 70px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid #1e90ff;
+  transition: transform 0.3s ease;
+}
+
+.voter-list-table-data img:hover {
+  transform: scale(1.1);
+}
+
+/* No Voters Text */
+.voter-list-table-container p {
+  text-align: center;
+  font-size: 18px;
+  color: #888888;
+  margin-top: 20px;
+}

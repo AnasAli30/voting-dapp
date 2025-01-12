@@ -42,8 +42,9 @@ Wallet address: ${selectedAccount}`
    const res = await axios.post(`http://localhost:3000/api/authentication?accountAddress=${selectedAccount}`,dataSign);
    console.log(res.data.token);
    localStorage.setItem("token",res.data.token)
-    // const contractInstance = new ethers.Contract(ca,abi,signer)
-    return {selectedAccount,chainId,signer,provider}
+   
+    const contractInstance = null;
+    return {contractInstance,selectedAccount,chainId,signer,provider}
 
 }catch(e){
         console.log(e)

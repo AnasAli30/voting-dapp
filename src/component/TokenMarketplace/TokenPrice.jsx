@@ -18,7 +18,7 @@ const TokenPrice = ({contractInstance}) => {
         }
         
     },[contractInstance])
-    return ( <>Token Price: {tokenPrice} eth</> );
+    return ( <div style={{color:"black",fontWeight:"bold"}}>Token Price: {tokenPrice} eth</div> );
 }
  
 export default TokenPrice;

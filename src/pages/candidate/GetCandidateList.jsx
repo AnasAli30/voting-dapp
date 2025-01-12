@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import {toast} from "react-hot-toast"
 import "./GetCandidateList.css"
+import CaseVote from "../../component/Voter/CaseVote";
 
 const GetCandidateList =  ()=>{
   const {web3state} = useWeb3Context()
@@ -46,7 +47,12 @@ const GetCandidateList =  ()=>{
         <tbody>
             {candidateList.map((candidate, index) => (
                 <tr key={index} className={index % 2 === 0 ? "even-row" : "odd-row"}>
-                    <td className="candidate-list-table-data">{candidate.candidateAddress}</td>
+                    <td className="candidate-list-table-data">{candidate.candidateAddress}
+                      <div className="case-vote-button">
+                    <CaseVote id={candidate.candidateId}></CaseVote> 
+                    </div>
+                    </td>
+                 
                     <td className="candidate-list-table-data">{candidate.name}</td>
                     <td className="candidate-list-table-data">{candidate.party}</td>
                     <td className="candidate-list-table-data">{String(candidate.votes)}</td>
@@ -54,10 +60,15 @@ const GetCandidateList =  ()=>{
                       <img 
                        width={"70px"} 
                        height={"70px"} 
-                       src={`http://localhost:3000/images/CandidateImages/${candidate.candidateAddress}.png`}
-                      />      
+                       src={`http://localhost:3000/images/user/${candidate.candidateAddress}.jpg`}
+                      />    
+                       
                     </td>
+                    
+                    
                 </tr>
+                
+               
             ))}
         </tbody>
     </table>):(<p>No Candidates Found!</p>)}
