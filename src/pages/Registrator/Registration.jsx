@@ -8,6 +8,7 @@ import abi from "../../constant/abi.json"
 import {contractBytecode} from "../../constant/bytecode"
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
+import Footer from '../../component/footer/Footer';
 
 export default function Registration() {
     const name = useRef(null);
@@ -129,8 +130,21 @@ export default function Registration() {
 
   return (
     <div className='Registration'>
-        <h3>Registration Form</h3>
+       
         <form action="" onSubmit={handleSubmit}>
+        <h3>Registration Form</h3>
+     
+            <input ref={name} type="text" placeholder='Name' required/>
+            <input type="number" ref={age} placeholder="Age" min="18" required />
+            
+            {stat!=0?<>
+           <>
+           <input ref={contract} type="text" placeholder='Contract address provided by Election Commision' required/>
+           </>
+        </>:""}
+        {stat==2?<>
+            <input ref={party} type="party" placeholder='Party'/>
+        </>:""}
         <label htmlFor="file-upload" style={{
         backgroundColor: '#007bff',
         color: 'white',
@@ -146,20 +160,10 @@ export default function Registration() {
         type="file"
         accept="image/*"
         onChange={(e) => setFile(e.target.files[0])}
-        style={{ display: 'none' }} required
+        style={{ display: 'none'}} required
       />
        {file && <p style={{color:"black",fontWeight:"bold"}}>Selected File: {file.name}</p>}
-            <input ref={name} type="text" placeholder='Name' required/>
-            <input type="number" ref={age} placeholder="Age" min="18" required />
-            {stat!=0?<>
-           <>
-           <input ref={contract} type="text" placeholder='Contract address provided by Election Commision' required/>
-           </>
-        </>:""}
-        {stat==2?<>
-            <input ref={party} type="party" placeholder='Party'/>
-        </>:""}
-            <select value={selectedGender} ref={gender} onChange={handleChange} required>
+            <select value={selectedGender} style={{marginTop:"16px"}} ref={gender} onChange={handleChange} required>
       {selectedGender === genderEnum.NotSpecified && (
         <option value={genderEnum.NotSpecified} disabled>
          Select Your Gender
@@ -178,6 +182,7 @@ export default function Registration() {
        
         <button type="submit">Register</button>
         </form>
+        <Footer></Footer>
     </div>
   )
 }

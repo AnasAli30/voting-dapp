@@ -8,6 +8,7 @@ import { ethers } from "ethers";
 import abi from "../../constant/abi.json";
 import { toast } from "react-hot-toast";
 import "./wallet.css";
+import Footer from "../footer/Footer";
 
 
 const Home = () => {
@@ -64,43 +65,48 @@ const Home = () => {
   return (
     <div className="home-container">
     <Particles 
-                params={{
-                    polygon: {
-                        enable: true,
-                        type: 'inside',
-                        move: {
-                            radius: 10
-                        },
-                        url: 'path/to/svg.svg'
-                    }
-                }} />
-      <h1 className="home-title">Decentralized Voting DApp</h1>
-      <p className="home-subtitle">Secure. Transparent. Immutable.</p>
-      <button  className="connect-button" onClick={handleWallet}>
+        params={{
+            polygon: {
+                enable: true,
+                type: 'inside',
+                move: {
+                    radius: 10
+                },
+                url: 'path/to/svg.svg'
+            }
+        }} 
+    />
+    <h1 className="home-title">Voting DApp</h1>
+    <p className="home-subtitle">Secure. Transparent. Immutable.</p>
+    <button className="connect-button" onClick={handleWallet}>
         {label}
-      </button>
+        <img src=" https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/MetaMask_Fox.svg/2048px-MetaMask_Fox.svg.png" className="metamask" alt="" />
+       
+    </button>
 
-      <div className="features">
+    <div className="features">
         <div className="feature-box">
-          <h3 className="feature-title">Vote Securely</h3>
-          <p className="feature-description">
-            Cast your vote securely on the blockchain.
-          </p>
+            <h3 className="feature-title">Vote Securely</h3>
+            <p className="feature-description">
+                Cast your vote securely on the blockchain.
+            </p>
         </div>
         <div className="feature-box">
-          <h3 className="feature-title">Transparent Results</h3>
-          <p className="feature-description">
-            View real-time and verifiable election results.
-          </p>
+            <h3 className="feature-title">Transparent Results</h3>
+            <p className="feature-description">
+                View real-time and verifiable election results.
+            </p>
         </div>
         <div className="feature-box">
-          <h3 className="feature-title">Decentralized System</h3>
-          <p className="feature-description">
-            No third-party control, ensuring full transparency.
-          </p>
+            <h3 className="feature-title">Decentralized System</h3>
+            <p className="feature-description">
+                No third-party control, ensuring full transparency.
+            </p>
         </div>
-      </div>
     </div>
+
+   <Footer></Footer>
+</div>
   );
 };
 

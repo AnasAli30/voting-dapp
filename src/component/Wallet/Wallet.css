@@ -1,103 +1,197 @@
-/* Add this to your wallet.css file */
-
+/* Home Container Styling */
 .home-container {
-    position: relative;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-    background: linear-gradient(135deg, #6a11cb, #2575fc, #42a5f5, #ff7e5f);
-    background-size: 400% 400%;
-    animation: gradientAnimation 20s ease infinite;
-    overflow: hidden;
-  }
-  
-  @keyframes gradientAnimation {
-    0% {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  background: linear-gradient(135deg, #6a11cb, #2575fc, #42a5f5, #ff7e5f);
+  background-size: 400% 400%;
+  animation: gradientAnimation 20s ease infinite;
+  overflow: hidden;
+}
+
+@keyframes gradientAnimation {
+  0% {
       background-position: 0% 50%;
-    }
-    50% {
+  }
+  50% {
       background-position: 100% 50%;
-    }
-    100% {
+  }
+  100% {
       background-position: 0% 50%;
-    }
   }
-  
+}
+
+.home-title {
+  margin-top: 50px;
+  font-size: 3.8rem;
+  color: #fff;
+  z-index: 1;
+  text-shadow: 3px 3px 12px rgba(0, 0, 0, 0.6);
+  font-family: 'Roboto', sans-serif;
+  text-align: center;
+}
+
+.home-subtitle {
+  font-size: 1.6rem;
+  color: #fff;
+  z-index: 1;
+  text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.5);
+  font-family: 'Roboto', sans-serif;
+  text-align: center;
+}
+
+.connect-button {
+  background-color: #33fc6f;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  padding: 16px 32px;
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #fff;
+  cursor: pointer;
+  border-radius: 50px;
+  z-index: 1;
+  transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  width: 30%;
+}
+
+.connect-button .metamask{
+  width: 40px;
+  height: 40px;
+}
+
+.connect-button:hover {
+  background-color: #62f98f;
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+}
+
+/* Features Section Styling */
+.features {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  margin-top: 3rem;
+  z-index: 1;
+  justify-content: center;
+}
+
+.feature-box {
+  background: linear-gradient(145deg, #ffffff, #e6e6e6);
+  padding: 25px;
+  border-radius: 15px;
+  color: #333;
+  text-align: center;
+  width: 250px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.feature-box:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+.feature-title {
+  font-size: 1.8rem;
+  font-weight: bold;
+  font-family: 'Roboto', sans-serif;
+  color: #2575fc;
+}
+
+.feature-description {
+  font-size: 1.1rem;
+  font-family: 'Roboto', sans-serif;
+  color: #555;
+}
+
+/* Optional: Customize particles background */
+.home-container .tsparticles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+}
+
+
+
+/* Responsive Adjustments */
+@media (max-width: 1024px) {
   .home-title {
-    font-size: 3.5rem;
-    color: #fff;
-    z-index: 1;
-    text-shadow: 3px 3px 12px rgba(0, 0, 0, 0.6);
-    font-family: 'Roboto', sans-serif;
+      font-size: 2.8rem;
   }
-  
+
   .home-subtitle {
-    font-size: 1.6rem;
-    color: #fff;
-    z-index: 1;
-    text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.5);
-    font-family: 'Roboto', sans-serif;
+      font-size: 1.4rem;
   }
-  
+
   .connect-button {
-    background-color: #ff7e5f;
-    border: none;
-    padding: 16px 32px;
-    font-size: 1.3rem;
-    color: #fff;
-    cursor: pointer;
-    border-radius: 50px;
-    z-index: 1;
-    transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    width: 30%;
+      width: 50%;
   }
-  
-  .connect-button:hover {
-    background-color: #feb47b;
-    transform: translateY(-5px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+}
+
+@media (max-width: 768px) {
+  .home-title {
+      font-size: 2.2rem;
   }
-  
+
+  .home-subtitle {
+      font-size: 1.2rem;
+  }
+
+  .connect-button {
+      width: 70%;
+      font-size: 1.1rem;
+  }
+
   .features {
-    display: flex;
-    gap: 2.5rem;
-    margin-top: 3rem;
-    z-index: 1;
+      flex-direction: column;
+      align-items: center;
   }
-  
+
   .feature-box {
-    background-color: rgba(0, 0, 0, 0.4);
-    padding: 25px;
-    border-radius: 12px;
-    color: white;
-    text-align: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+      width: 70%;
   }
-  
-  .feature-box:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.6);
+  .footer{
+    height: 40px;
   }
-  
-  .feature-title {
-    font-size: 1.7rem;
-    font-weight: bold;
-    font-family: 'Roboto', sans-serif;
+  .footer-text {
+    font-size: 0.9rem;
+}
+.github-logo {
+    width: 35px;
+    height: 35px;
+}
+}
+
+@media (max-width: 480px) {
+  .home-title {
+      font-size: 1.8rem;
   }
-  
-  .feature-description {
-    font-size: 1.1rem;
-    font-family: 'Roboto', sans-serif;
+
+  .home-subtitle {
+      font-size: 1rem;
   }
-  
-  /* Optional: Customize particles background */
-  .home-container .tsparticles {
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 0;
+
+  .connect-button {
+      width: 90%;
+      font-size: 1rem;
   }
-  
+
+  .footer{
+    height: 37px;
+  }
+  .footer-text {
+    font-size: 0.8rem;
+}
+.github-logo {
+    width: 30px;
+    height: 30px;
+}
+}
