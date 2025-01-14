@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useWeb3Context } from "../../context/useWeb3Context";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -8,16 +8,20 @@ import { ethers } from "ethers";
 import abi from "../../constant/abi.json";
 import { toast } from "react-hot-toast";
 import "./wallet.css";
-import { tsParticles } from "@tsparticles/engine";
+
 
 const Home = () => {
   const token = localStorage.getItem("token");
   const { handleWallet, web3state, setWeb3state } = useWeb3Context();
   const { selectedAccount, signer } = web3state;
   const navigateTo = useNavigate();
-  const particlesInit = async (main) => {
-    await loadFull(main);
-  };
+  const [label,setLabel] = useState("Connect Wallet")
+
+  useEffect(()=>{
+   if(!window.ethereum){
+    setLabel("Install Metamask")
+   }
+  },[])
 
   useEffect(() => {
     const fetch = async () => {
@@ -72,8 +76,8 @@ const Home = () => {
                 }} />
       <h1 className="home-title">Decentralized Voting DApp</h1>
       <p className="home-subtitle">Secure. Transparent. Immutable.</p>
-      <button className="connect-button" onClick={handleWallet}>
-        Connect Wallet
+      <button  className="connect-button" onClick={handleWallet}>
+        {label}
       </button>
 
       <div className="features">

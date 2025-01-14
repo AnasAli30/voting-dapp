@@ -12,8 +12,14 @@ export default function CaseVote({id}) {
         const voterId = userDataCa.voterId;
         const candidateId = id;
         console.log(voterId,candidateId)
-        await contractInstance.castVote(voterId,candidateId)
-        toast.success("Voting SuccesFull")
+        await toast.promise(
+           contractInstance.castVote(voterId, candidateId),
+          {
+            loading: "Submitting your vote...",
+            success: "Vote cast successfully! 🗳️",
+            error: "Failed to cast vote. Please try again.",
+          }
+        );
       }catch(error){
         toast.error(error.reason)
         console.error(error)

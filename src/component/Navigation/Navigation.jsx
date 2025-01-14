@@ -18,7 +18,6 @@ export default function Navigation() {
         <li className="nav-item"><Link className="nav-link" to="/profile">Profile</Link></li>
         <li className="nav-item"><Link className="nav-link" to="/GetVoterList">Voter List</Link></li>
         <li className="nav-item"><Link className="nav-link" to="/GetCandidateList">Candidate List</Link></li>
-        <li className="nav-item"><Link className="nav-link" to="/tokenMarketplace">Token Marketplace</Link></li>
         {userData?.level === 0 && (
           <li className="nav-item nav-item-election">
             <Link className="nav-link" to="/ElectionCommision">Election Commission</Link>

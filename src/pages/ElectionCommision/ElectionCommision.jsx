@@ -25,7 +25,7 @@ const ElectionCommision = () => {
       <div className="result">
       <DisplayResult/>
       </div>
-      <div className="election-component">
+      <div className="election-component" style={{textAlign:"center",width:"30%",margin:"0px auto"}}>
         <h2>Voting Status</h2>
         <VotingStatus status={status} setStatus={setStatus}/>
       </div>

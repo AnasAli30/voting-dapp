@@ -8,7 +8,8 @@ import CaseVote from "../../component/Voter/CaseVote";
 
 const GetCandidateList =  ()=>{
   const {web3state} = useWeb3Context()
-  const {contractInstance} = web3state;
+  const {contractInstance,userData} = web3state;
+  console.log(userData)
   const [candidateList,setCandidateList] = useState([])
   const token = localStorage.getItem("token")
   const navigateTo = useNavigate()
@@ -50,9 +51,9 @@ const GetCandidateList =  ()=>{
                 <tr key={index} className={index % 2 === 0 ? "even-row" : "odd-row"}>
                    <td className="candidate-list-table-data">{candidate.candidateId.toString()}</td>
                     <td className="candidate-list-table-data">{candidate.candidateAddress}
-                      <div className="case-vote-button">
-                    <CaseVote id={candidate.candidateId}></CaseVote> 
-                    </div>
+                      
+                   {userData?.level==1?<div className="case-vote-button"><CaseVote id={candidate.candidateId}></CaseVote></div>:"" }
+                    
                     </td>
                  
                     <td className="candidate-list-table-data">{candidate.name}</td>

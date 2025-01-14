@@ -114,6 +114,14 @@
     margin-top: 20px;
     margin-bottom: 20px;
   }
+
+  .loading-status{
+    background-color: rgb(215, 211, 211);
+    width: 80px;
+    height: 20px;
+    text-align: center;
+    margin: 0 auto;
+  }
   
   /* Responsive Adjustments */
   @media (max-width: 768px) {

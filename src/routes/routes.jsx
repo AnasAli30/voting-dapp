@@ -6,7 +6,6 @@ import ElectionCommision from "../pages/ElectionCommision/ElectionCommision"
 import Wallet from "../component/Wallet/wallet"
 import { createBrowserRouter } from "react-router-dom"
 import Navigation from "../component/Navigation/Navigation"
-import TokenExchange from "../pages/TokenMarketplace/TokenMarketplace"
 import Registration from "../pages/Registrator/Registration"
 import Profile from "../pages/profile/Profile"
 
@@ -80,12 +79,6 @@ export const routes = createBrowserRouter([
           <ElectionCommision></ElectionCommision>
           </div>
         )
-        },
-        {path:"/tokenMarketplace",element:(
-          <div>
-              <Navigation/>
-              <TokenExchange/>
-          </div>
-      )},
+        }
 
     ,])

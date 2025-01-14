@@ -42,10 +42,18 @@ export default function Registration() {
         async function deployContract() {
           const factory = new ethers.ContractFactory(abi, contractBytecode, signer);
           try {
-            const contract = await factory.deploy("0x8c1C870DacC51ad946c5F39B8115C8fbE2165c22");
-            console.log("Deploying contract...");
-            await contract.waitForDeployment();
-            toast.success("Contract Deployed");
+            const contract = await factory.deploy();
+            toast.promise(
+              (async () => {
+                await contract.waitForDeployment();
+              })(),
+              {
+                loading: "Deploying contract...",
+                success: "Contract Deployed!",
+                error: "Failed to deploy the contract.",
+              }
+            );
+            
             return contract.target;
           } catch (err) {
             throw new Error(err);
@@ -98,7 +106,6 @@ export default function Registration() {
               }
 
             }else{
-              console.log("election commission")
               try{
             const ca =  await deployContract();
             await uploadUserImage(namer,ager,genderr,statusr,ca,file,selectedAccount,partyr);
@@ -124,7 +131,24 @@ export default function Registration() {
     <div className='Registration'>
         <h3>Registration Form</h3>
         <form action="" onSubmit={handleSubmit}>
-            <input type="file" onChange={(e)=>{setFile(e.target.files[0])}} />
+        <label htmlFor="file-upload" style={{
+        backgroundColor: '#007bff',
+        color: 'white',
+        padding: '8px 16px',
+        borderRadius: '4px',
+        cursor: 'pointer',
+        display: 'inline-block'
+      }}>
+        Choose Img
+      </label>
+      <input
+        id="file-upload"
+        type="file"
+        accept="image/*"
+        onChange={(e) => setFile(e.target.files[0])}
+        style={{ display: 'none' }} required
+      />
+       {file && <p style={{color:"black",fontWeight:"bold"}}>Selected File: {file.name}</p>}
             <input ref={name} type="text" placeholder='Name' required/>
             <input type="number" ref={age} placeholder="Age" min="18" required />
             {stat!=0?<>

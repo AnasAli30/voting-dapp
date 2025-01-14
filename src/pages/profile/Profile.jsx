@@ -3,6 +3,7 @@ import './Profile.css';
 import { useWeb3Context } from '../../context/useWeb3Context';
 import { use } from 'react';
 import { useNavigate } from "react-router-dom";
+import toast from 'react-hot-toast';
 
 const Profile = () => {
     const {web3state,setWeb3state} = useWeb3Context();
@@ -18,6 +19,10 @@ const Profile = () => {
       }
     },[token,navigateTo])
 
+    const handleCopy = (text, label) => {
+      navigator.clipboard.writeText(text);
+      toast.success(`${label} copied to clipboard!`);
+  };
 
     useEffect(()=>{
       const fectch=async()=>{
@@ -65,8 +70,8 @@ const Profile = () => {
             <p><strong>Age:</strong> {userData?.age}</p>
             <p><strong>Gender:</strong> {genderLabel}</p>
             {userData?.party!="undefined"?<p><strong>Party:</strong> {userData?.party}</p>:""}
-            <p><strong>Contract Address:</strong> <span className="highlight-address">{userData?.contractAdd}</span></p>
-          <p><strong>Account Address:</strong> <span className="highlight-address">{userData?.accountAddress}</span></p>
+            <p><strong>Contract Address:</strong> <span className="highlight-address" onClick={() => handleCopy(userData?.contractAdd, "Contract Address")}>{userData?.contractAdd}</span></p>
+          <p><strong>Account Address:</strong> <span className="highlight-address" onClick={() => handleCopy(userData?.accountAddress, "Account Address")}>{userData?.accountAddress}</span></p>
           </div>
         </div>
       </div>

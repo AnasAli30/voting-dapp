@@ -2,10 +2,16 @@ import React from 'react'
 import {ethers} from "ethers"
 import axios from 'axios'
 import abi from "../constant/abi.json"
+import toast from 'react-hot-toast'
 
 export async function getWeb3State() {
+
+    const BASE_CHAIN_ID = "0x2105";
+
+
     try{
     if(!window.ethereum){
+        window.open("https://metamask.io/", '_blank', 'noopener,noreferrer');
         throw new Error("metamask not installed")
     }
 
@@ -19,14 +25,45 @@ export async function getWeb3State() {
         "method":"eth_chainId"
     })
 
+    if (chainidHex !== BASE_CHAIN_ID) {
+        try {
+            await window.ethereum.request({
+                method: "wallet_switchEthereumChain",
+                params: [{ chainId: BASE_CHAIN_ID }],
+            });
+            toast.success("Switched to Base Mainnet");
+        } catch (switchError) {
+            if (switchError.code === 4902) {
+                await window.ethereum.request({
+                    method: "wallet_addEthereumChain",
+                    params: [
+                        {
+                            chainId: BASE_CHAIN_ID,
+                            chainName: "Base Mainnet",
+                            nativeCurrency: {
+                                name: "Ethereum",
+                                symbol: "ETH",
+                                decimals: 18,
+                            },
+                            rpcUrls: ["https://developer-access-mainnet.base.org"],
+                            blockExplorerUrls: ["https://basescan.org"],
+                        },
+                    ],
+                });
+                toast.success("Base Mainnet added and switched");
+            } else {
+                throw new Error("Failed to switch to Base Mainnet");
+            }
+        }
+    }
+
+
     const chainId = parseInt(chainidHex,16);
+    console.log(chainidHex)
 
     const provider = new ethers.BrowserProvider(window.ethereum);
 
     const signer = await provider.getSigner();
-
-    // const ca = "0x3e0FEEBE40869723128368cC4564C5D6cec60fb8"
-
     const message =`Welcome to Voting Dapp!
 
 Click to sign in and accept the Terms of Service  and Privacy Policy.
@@ -47,7 +84,10 @@ Wallet address: ${selectedAccount}`
     return {contractInstance,selectedAccount,chainId,signer,provider}
 
 }catch(e){
-        console.log(e)
+    if(e.message){
+        toast.error(e.message.slice(0,20))
+    }
+        console.log(e.message)
     }
 
 

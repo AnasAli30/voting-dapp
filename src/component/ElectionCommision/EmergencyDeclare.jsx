@@ -20,7 +20,7 @@ export default function EmergencyDeclare() {
     
     <div>
         <form action="" onClick={handleSubmit}>
-        <input style={{backgroundColor:"red",fontWeight:"bold"}} type="submit" value="EmergencyDeclared" />
+        <input style={{backgroundColor:"red",fontWeight:"bold"}} type="submit" value="Emergency Declare" />
         </form>
         </div>
   )

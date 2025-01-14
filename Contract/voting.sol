@@ -40,13 +40,12 @@ bool stopVoting;
 mapping(uint => Voter) voterDetails;
 mapping(uint => Candidate) candidateDetails;
 
-IERC20 public gldToken;
+
 
 enum VotingStatus {NotStarted, InProgress, Ended}
 enum Gender {NotSpecified, Male, Female, Other}
 
-constructor(address _gldToken) {
-    gldToken = IERC20(_gldToken);
+constructor() {
     electionCommission=msg.sender;
 }
 
@@ -167,7 +166,6 @@ function getVoter(address add) public view returns (Voter[] memory) {
 
 
 function castVote(uint _voterId, uint _candidateId) external isVotingOver(){
-    require (gldToken.balanceOf(msg.sender)>0, "not allowed");
     require(block.timestamp >= startTime, "Voting has not started yet");
     require(voterDetails[_voterId].voteCandidateId==0,"You have already voted");
     require(voterDetails[_voterId].voterAddress==msg.sender,"You are not authourized");

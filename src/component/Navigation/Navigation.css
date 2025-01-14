@@ -83,11 +83,11 @@ nav a.active {
 }
 
 /* Highlight the Election Commission link differently */
-nav ul li:nth-child(5) a {
+nav ul li:nth-child(4) a {
   background-color: #e94560;
   color: #fff;
 }
 
-nav ul li:nth-child(5) a:hover {
+nav ul li:nth-child(4) a:hover {
   background-color: #b42b47;
 }

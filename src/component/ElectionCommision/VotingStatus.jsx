@@ -26,7 +26,7 @@ export default function VotingStatus({ status,setStatus}) {
         },[web3state])
   return (
     <> <div className='status' style={{color:"black"}}>
-        {status?<>{status}</>:<></>}
+        {status?<>{status}</>:<div className='loading-status'></div>}
     </div>
   
     </>

@@ -21,8 +21,9 @@ export default function Web3Provider({children}) {
     }
 
     useEffect(()=>{
+      if(window.ethereum){
       window.ethereum.on("accountsChanged",()=>handleAccountChange(setWeb3state));
-      window.ethereum.on("chainChanged",()=>handleChainChange(setWeb3state));
+      window.ethereum.on("chainChanged",()=>handleChainChange(setWeb3state));}
   
     },[])
 

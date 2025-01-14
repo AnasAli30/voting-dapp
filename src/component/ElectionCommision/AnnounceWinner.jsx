@@ -9,9 +9,14 @@ export default function AnnounceWinner() {
     const handleSubmit=async(e)=>{
       try{
         e.preventDefault();
-      let data = await contractInstance.announceVotingResult();
-      console.log(data);
-      toast.success("Winner Accounced")
+        await toast.promise(
+           contractInstance.announceVotingResult(),
+                  {
+                    loading: "Announcing Result...",
+                    success: "Winner Accounced successfully! 🗳️",
+                    error: "Failed ! Please try again.",
+                  }
+                );
       }catch(e){
         toast.error("Error:fetching Voting Result")
         console.log(e)
@@ -23,7 +28,7 @@ export default function AnnounceWinner() {
     
     <div>
         <form action="" onClick={handleSubmit}>
-        <input style={{backgroundColor:"lightgreen",fontWeight:"bold",cursor:"pointer"}} type="submit" value="Annoce voting result" />
+        <input style={{backgroundColor:"lightgreen",fontWeight:"bold",cursor:"pointer"}} type="submit" value="Announce Voting result" />
         </form>
         </div>
   )
