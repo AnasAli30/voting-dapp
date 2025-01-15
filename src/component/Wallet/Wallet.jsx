@@ -7,7 +7,7 @@ import { loadFull } from 'tsparticles';
 import { ethers } from "ethers";
 import abi from "../../constant/abi.json";
 import { toast } from "react-hot-toast";
-import "./wallet.css";
+import "./Wallet.css";
 import Footer from "../footer/Footer";
 
 
