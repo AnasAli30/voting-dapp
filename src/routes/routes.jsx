@@ -3,7 +3,7 @@ import RagisterVoter from '../pages/voter/RagisterVoter'
 import GetVoterList from '../pages/voter/GetVoterList'
 import GetCandidateList from "../pages/candidate/GetCandidateList"
 import ElectionCommision from "../pages/ElectionCommision/ElectionCommision"
-import Wallet from "../component/Wallet/wallet"
+import Wallet from "../component/Wallet/Wallet.jsx"
 import { createBrowserRouter } from "react-router-dom"
 import Navigation from "../component/Navigation/Navigation"
 import Registration from "../pages/Registrator/Registration"
