@@ -24,7 +24,7 @@ Check out the live version here: [Voting DApp](https://voting-dapp-t749.vercel.a
 The Voting DApp operates with three distinct user roles, each with specific functionalities:
 
 ### 1. **Election Commission**
-- Deploys the smart contract on the Ethereum Base chain.
+- Automatically deploys the smart contract on the Ethereum Base chain upon registration.
 - Has the authority to **start** and **end** the voting process.
 - Declares the **final results** after voting concludes.
 - Shares the smart contract address with voters and candidates for registration.
@@ -63,12 +63,11 @@ The Voting DApp operates with three distinct user roles, each with specific func
 ## Usage
 
 1. **Connect MetaMask** to the Ethereum Base chain.
-2. **Deploy the smart contract** using Remix or Hardhat.
-3. **Access the DApp** or [Live Demo](https://voting-dapp-t749.vercel.app/).
-4. **Register as Election Commission, Candidate, or Voter** using the provided smart contract address.
-5. **Start the voting process** (Election Commission).
-6. **Vote for candidates** (Voter) and **track results** in real-time.
-7. **Declare results** once voting is complete (Election Commission).
+2. **Access the DApp** or [Live Demo](https://voting-dapp-t749.vercel.app/).
+3. **Register as Election Commission, Candidate, or Voter** using the provided smart contract address.
+4. **Start the voting process** (Election Commission).
+5. **Vote for candidates** (Voter) and **track results** in real-time.
+6. **Declare results** once voting is complete (Election Commission).
 
 ## Folder Structure
 
@@ -90,5 +89,5 @@ This project is licensed under the MIT License.
 
 ## Contact
 
-For any inquiries or feedback, reach out to [Anas Ali] at [[anasali12665@gmail.com](mailto:anasali12665@gmail.com)].
+For any inquiries or feedback, reach out to Anas Ali at [anasali12665@gmail.com](mailto:anasali12665@gmail.com).
 
