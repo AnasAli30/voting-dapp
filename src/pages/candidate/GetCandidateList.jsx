@@ -63,7 +63,7 @@ const GetCandidateList =  ()=>{
                       <img 
                        width={"70px"} 
                        height={"70px"} 
-                       src={`http://localhost:3000/images/user/${candidate.candidateAddress}.jpg`}
+                       src={`https://voting-dapp-server-zdgg.onrender.com/images/user/${candidate.candidateAddress.toLowerCase()}.jpg`}
                       />    
                        
                     </td>

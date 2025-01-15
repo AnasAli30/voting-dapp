@@ -76,7 +76,7 @@ Wallet address: ${selectedAccount}`
    const dataSign = {
     signature
    }
-   const res = await axios.post(`http://localhost:3000/api/authentication?accountAddress=${selectedAccount}`,dataSign);
+   const res = await axios.post(`https://voting-dapp-server-zdgg.onrender.com/api/authentication?accountAddress=${selectedAccount}`,dataSign);
    console.log(res.data.token);
    localStorage.setItem("token",res.data.token)
    

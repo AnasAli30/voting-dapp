@@ -19,7 +19,7 @@ export const uploadUserImage=async(namer,ager,genderr,statusr,contractr,file,sel
    form.append('contractAdd',contractr );
    form.append('party',partyr );
 
-    const res = await axios.post("http://localhost:3000/api/postImage",form,config)
+    const res = await axios.post("https://voting-dapp-server-zdgg.onrender.com/api/postImage",form,config)
   console.log(res)
     if(res.data.message == "successfull"){
         return true

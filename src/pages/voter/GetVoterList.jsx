@@ -47,7 +47,7 @@ export default function GetVoterList() {
                   <tr key={index} className={index % 2 === 0 ? "even-row" : "odd-row"}>
                       <td className="voter-list-table-data">{voter.voterAddress}</td>
                       <td className="voter-list-table-data">{voter.name}</td>
-                      <td className="voter-list-table-data"><img width={"70px"} height={"70px"} src={`http://localhost:3000/images/user/${voter.voterAddress}.jpg`}></img></td>
+                      <td className="voter-list-table-data"><img width={"70px"} height={"70px"} src={`https://voting-dapp-server-zdgg.onrender.com/images/user/${voter.voterAddress.toLowerCase()}.jpg`}></img></td>
                   </tr>
               ))}
           </tbody>

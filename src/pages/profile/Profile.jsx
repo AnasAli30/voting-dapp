@@ -56,7 +56,7 @@ const Profile = () => {
         <div className="profile-card">
           <div className="profile-header">
             <img
-             src={`http://localhost:3000/images/user/${userData?.accountAddress}.jpg`}
+             src={`https://voting-dapp-server-zdgg.onrender.com/images/user/${userData?.accountAddress.toLowerCase()}.jpg`}
               alt="Profile"
               className="profile-image"
             />

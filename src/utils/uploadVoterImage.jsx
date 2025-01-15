@@ -13,7 +13,7 @@ export const uploadVoterImage=async(file,selectedAccount)=> {
    form.append("file",file);
    form.append('accountAddress',selectedAccount );
 form.append('imageName', file.name);
-    const res = await axios.post("http://localhost:3000/api/postVoterImage",form,config)
+    const res = await axios.post("https://voting-dapp-server-zdgg.onrender.com/api/postVoterImage",form,config)
   console.log(res)
     if(res.data.message == "successfull"){
         return true

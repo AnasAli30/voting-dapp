@@ -33,7 +33,7 @@ const Home = () => {
       };
       try {
         const res = await axios.post(
-          "http://localhost:3000/api/check",
+          "https://voting-dapp-server-zdgg.onrender.com/api/check",
           { accountAddress: selectedAccount },
           config
         );

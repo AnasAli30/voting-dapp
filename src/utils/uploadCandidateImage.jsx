@@ -12,7 +12,7 @@ export const uploadCandidateImage=async(file)=> {
             "x-access-token":token
         }
     }
-    const res = await axios.post("http://localhost:3000/api/postCandidateImage",form,config)
+    const res = await axios.post("https://voting-dapp-server-zdgg.onrender.com/api/postCandidateImage",form,config)
     if(res.data.message == "successfull"){
         return true
     }
